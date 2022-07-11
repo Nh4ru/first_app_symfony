@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    Page d'acceuil |
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <p>Page d'acceuil de mon app Symfony</p>
+    
+    {{ dump(data) }}
+
+    <p>
+        Nom :
+        {{ data.nom }}    
+    </p>
+    <p>
+        Age :
+        {{ data.age }}    
+    </p>
+    <p>
+        Ville :
+        {{ data.ville }}    
+    </p>
+
+{% endblock %}
+
