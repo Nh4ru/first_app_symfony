@@ -1,0 +1,19 @@
+.banner {
+    background-image: url("../../images/markus-spiske-iar-afB0QQw-unsplash.jpg");
+    background-size: cover;
+    height: 60vh;
+    
+    .header {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .title {
+            background-color: rgba(202, 78, 121, 0.644);
+            border-radius: $radius-default;
+            padding: 1em;
+            color: white;
+        }
+    }
+}
