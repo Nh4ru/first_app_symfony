@@ -81,4 +81,25 @@ class AdminController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/article/edit/{id}', name: 'admin.article.edit', methods: 'GET|POST')]
+    public function editArticle($id, Request $request)
+    {
+        $article = $this->repoArticle->find($id);
+
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($article);
+            $this->em->flush();
+            $this->addFlash('success', 'Article modifié avec succès');
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->render('Backend/Article/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 }
