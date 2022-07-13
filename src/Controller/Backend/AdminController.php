@@ -8,6 +8,7 @@ use App\Repository\ArticleRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -55,17 +56,26 @@ class AdminController extends AbstractController
         $articles = $this->repoArticle->findAll();
 
         return $this->render('Backend/index.html.twig', [
-            'articles'=> $articles,
+            'articles' => $articles,
             'users' => $users,
         ]);
     }
 
     #[Route('/article/create', name: 'admin.article.create')]
-    public function createArticle()
+    public function createArticle(Request $request)
     {
         $article = new Article();
 
         $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $this->em->persist($article);
+            $this->em->flush();
+            $this->addFlash('success', 'Article crée avec succés');
+            return $this->redirectToRoute('admin');
+        }
 
         return $this->render('Backend/Article/create.html.twig', [
             'form' => $form->createView()

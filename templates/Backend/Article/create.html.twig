@@ -1,5 +1,10 @@
-{% extends "layout.html.twig" %}
+{% extends 'layout.html.twig' %}
 
 {% block body %}
-    {{ dump(form) }}
+  <div class="container-fluid mt-4">
+    <div class="card w-50 mx-auto p-3">
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </div>
+  </div>
 {% endblock %}
