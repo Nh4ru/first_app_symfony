@@ -45,7 +45,14 @@
                   <p class="card-text">{{ article.content }}</p>
                   <div class="row mt-4">
                     <div class="col-md-6">
-                      <a href={{ path('admin.article.edit', {id: article.id} ) }} class="btn btn-warning">Modifier</a>
+                      <a href={{ path('admin.article.edit', {id: article.id} ) }} class="btn btn-warning">Edit</a>
+                    </div>
+                    <div class="col-md-6">
+                      <form method="POST" action="{{ path('admin.article.delete', {id: article.id} ) }}" onsubmit="return confirm('Etes-vous vraiment sûr ?')">
+                          <input type="hidden" name="method" value="DELETE">
+                          <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                          <button class="btn btn-danger">Delete</button>
+                      </form>
                     </div>
                   </div>
                 </div>
