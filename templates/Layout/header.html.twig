@@ -1,7 +1,7 @@
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
 		<div class="container-fluid">
-			<a class="navbar-brand text-light" href={{ path('home') }}>My App Symfony</a>
+			<a class="navbar-brand text-light" href="{{ path('home') }}">My App Symfony</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -14,15 +14,15 @@
 			</div>
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
-					<div class="ml-left">
+					<div class="navbar-btn me-2">
 						<a href="{{ path('admin') }}" class="btn btn-secondary">Admin</a>
 					</div>
 				{% endif %}
-				<div class="ml-left ml-4">
+				<div class="navbar-btn">
 					<a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
 				</div>
 			{% else %}
-				<div class="ml-left">
+				<div class="navbar-btn">
 					<a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
 				</div>
 			{% endif %}
