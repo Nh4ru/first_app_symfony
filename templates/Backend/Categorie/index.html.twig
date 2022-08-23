@@ -41,30 +41,6 @@
         </div>
       {% endfor %}
     </div>
-    {# <table class="table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Titre</th>
-          <th>Enable</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for categorie in categories %}
-          <tr>
-            <td>{{ categorie.id }}</td>
-            <td>{{ categorie.titre }}</td>
-            <td>{{ categorie.enable ? 'Yes' : 'No' }}</td>
-            <td></td>
-          </tr>
-        {% else %}
-          <tr>
-            <td colspan="4">Aucunes entrées</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table> #}
     <a href="{{ path('app_categorie_new') }}" class="btn btn-primary">Créer une catégorie</a>
   </section>
 {% endblock %}
