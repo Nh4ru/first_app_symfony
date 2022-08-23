@@ -7,6 +7,7 @@ use App\Entity\Categorie;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,6 +34,12 @@ class ArticleType extends AbstractType
                         ->andWhere('c.enable = true')
                         ->orderBy('c.titre', 'ASC');
                 }
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'label' => 'Image : '
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu',
