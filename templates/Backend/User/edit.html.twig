@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Edit Utilisateur |
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <div class="card p-3 w-50 mx-auto">
+      <h1 class="text-center">
+        Editer
+        {{ user.nom }}
+      </h1>
+
+      {% include 'Backend/User/_form.html.twig' with { button_label: 'Modifier' } %}
+      <div class="text-end">
+        {% include 'Backend/User/_delete_form.html.twig' %}
+      </div>
+    </div>
+    <a href="{{ path('app_user_index') }}" class="btn btn-primary text-light">Retour à la liste</a>
+  </section>
+{% endblock %}
