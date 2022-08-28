@@ -1,6 +1,7 @@
 .banner {
     background-image: url("../../images/markus-spiske-iar-afB0QQw-unsplash.jpg");
     background-size: cover;
+    background-attachment: fixed;
     height: 60vh;
     
     .header {
@@ -10,7 +11,7 @@
         justify-content: center;
 
         .title {
-            background-color: rgba(202, 78, 121, 0.644);
+            background-color: $primary;
             border-radius: $border-radius;
             padding: 1em;
             color: white;
