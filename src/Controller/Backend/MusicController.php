@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/admin/user')]
+#[Route('/admin/music')]
 class MusicController extends AbstractController
 {
     #[Route('/', name: 'app_music_index', methods: ['GET'])]
@@ -39,4 +39,3 @@ class MusicController extends AbstractController
         ]);
     }
 }
-

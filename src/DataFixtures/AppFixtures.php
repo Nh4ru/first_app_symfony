@@ -27,9 +27,10 @@ class AppFixtures extends Fixture
             ->setUsername('Tristan-Fernandez')
             ->setMail('tristan-Fernandez@example.com')
             ->setPassword('(Bass-Pearl1989)')
+            ->setImageName('')
 
             // Nouvelle methode avec PHP 8
-            // ->setPassword($this->hasher->hashPassword($user, 'test1234'))
+            //->setPassword($this->hasher->hashPassword($user, '(Bass-Pearl1989)'))
 
             ->setRoles(['ROLE_ADMIN'])
             ->setVille('Valence');

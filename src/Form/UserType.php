@@ -26,6 +26,11 @@ class UserType extends AbstractType
                 'image_uri' => true,
                 'label' => 'Image : '
             ])
+            // ->add('musicFile', VichFileType::class, [
+            //     'required' => false,
+            //     'download_uri' => false,
+            //     'label' => 'Musique : '
+            // ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom : ',
                 'required' => true
