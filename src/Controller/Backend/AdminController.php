@@ -7,6 +7,7 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Serializable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class Admin Controller
- * @Route("/admin")
+ * 
  */
+#[Route('/admin')]
 class AdminController extends AbstractController
 {
     /**
@@ -69,8 +71,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->em->persist($article);
             $this->em->flush();
             $this->addFlash('success', 'Article crée avec succés');
@@ -102,11 +103,10 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/article/delete/{id}', name:'admin.article.delete', methods: 'DELETE|POST')]
+    #[Route('/article/delete/{id}', name: 'admin.article.delete', methods: 'DELETE|POST')]
     public function deleteArticle($id, Article $article, Request $request)
     {
-        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->get("_token")))
-        {
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->get("_token"))) {
             $this->em->remove($article);
             $this->em->flush();
             $this->addFlash('success', 'Articlesupprimé avec succès');
@@ -114,5 +114,4 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin');
     }
-
 }

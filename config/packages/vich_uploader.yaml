@@ -4,10 +4,15 @@ vich_uploader:
     metadata:
         type: attribute
 
-    mappings:
+    mappings:       
        articles:
-           uri_prefix: /images/articles
-           upload_destination: '%kernel.project_dir%/public/images/articles'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-           delete_on_remove: true
-           
+            uri_prefix: /images/articles
+            upload_destination: '%kernel.project_dir%/public/images/articles'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_remove: true       
+        
+       music:
+            uri_prefix: /music
+            upload_destination: '%kernel.project_dir%/public/music'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            delete_on_remove: true

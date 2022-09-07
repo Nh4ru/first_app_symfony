@@ -15,23 +15,23 @@
 
 {% block body %}
   <section class="container mt-4">
-    <h1 class="text-center">Admin des utilisateur</h1>
+    <h1 class="text-center">Admin des utilisateurs</h1>
     <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
       {% for user in users %}
         <div class="blog-card mt-0">
-        {% if user.imageName %}
-        <div class="blog-card-image">
-          <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.nom }}" />
-        </div>
-        {% endif %}
+          {% if user.imageName %}
+            <div class="blog-card-image">
+              <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.nom }}" />
+            </div>
+          {% endif %}
           <div class="blog-card-content">
             <div class="row align-items-center">
               <div class="col-md-6">{{ user.username }}</div>
               <div class="row">
-              <div class="col-md-6">{{ user.nom}}</div>
+                <div class="col-md-6">{{ user.nom }}</div>
               </div>
               <div class="row">
-              <div class="col-md-6">{{ user.prenom}}</div>
+                <div class="col-md-6">{{ user.prenom }}</div>
               </div>
               <div class="row">
                 <div class="col-md-6">
