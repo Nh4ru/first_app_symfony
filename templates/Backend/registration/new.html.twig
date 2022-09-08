@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Inscription |
+  {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <div class="card p-3 w-50 mx-auto">
+      <h1 class="text-center">Créer un utilisateur</h1>
+      {% include 'Backend/registration/_register.html.twig' with { button_label: 'Créer' } %}
+    </div>
+    <a href="{{ path('app_user_index') }}" class="btn btn-primary text-light mx-auto">Retour à la liste</a>
+  </section>
+{% endblock %}

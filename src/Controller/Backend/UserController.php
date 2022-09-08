@@ -5,10 +5,12 @@ namespace App\Controller\Backend;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/admin/user')]
 class UserController extends AbstractController
@@ -22,14 +24,25 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $UserRepository): Response
+    public function new(Request $request, UserRepository $UserRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entity): Response
     {
         $User = new User();
         $form = $this->createForm(UserType::class, $User);
         $form->handleRequest($request);
+        $User->setRoles(["ROLE_ADMIN"]);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $UserRepository->add($User, true);
+            $User->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $User,
+                    $form->get('password')->getData()
+
+                )
+            );
+
+            $entity->persist($User);
+            $entity->flush();
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }

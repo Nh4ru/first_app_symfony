@@ -18,6 +18,7 @@
 				</ul>
 			</div>
 			{% if app.user %}
+			
 				{% if is_granted('ROLE_ADMIN') %}
 					<div class="navbar-btn me-2">
 						<a href="{{ path('admin') }}" class="btn btn-secondary">Admin</a>
@@ -27,6 +28,9 @@
 					<a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
 				</div>
 			{% else %}
+				<div class="navbar-btn me-2">
+					<a href="{{ path('app_register') }}" class="btn btn-dark">Inscription</a>
+				</div>
 				<div class="navbar-btn">
 					<a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
 				</div>
