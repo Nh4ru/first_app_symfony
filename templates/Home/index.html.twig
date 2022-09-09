@@ -12,9 +12,11 @@
       {% for article in articles %}
         <div class="col-md-4">
           <div class="article-card">
-            <div class="article-card-image">
-              <img src="https://fakeimg.pl/600" alt="" />
-            </div>
+            {% if article.imageName %}
+              <div class="blog-card-image">
+                <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.titre }}" />
+              </div>
+            {% endif %}
             <div class="blog-card-content">
               <h2 class="blog-card-header">{{ article.titre }}</h2>
               <p>{{ article.content }}</p>
