@@ -38,8 +38,8 @@ class RegisterFormType extends AbstractType
                             'message' => 'Votre mot de passe ne peut pas être vide'
                         ]),
                         new Regex([
-                            'pattern' => '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}/^',
-                            'message' => 'Veuillez rentrer un code postal valide.'
+                            'pattern' => '/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/',
+                            'message' => 'Votre mot de passe doit comporter au moins 6 caractères, une lettre majuscule, une lettre miniscule et 1 chiffre sans espace blanc'
                         ])
                     ]
                 ],
