@@ -13,7 +13,7 @@
         <h2 class="text-center">Liste des Articles</h2>
         <a href="{{ path('admin.article.create') }}" class="btn btn-inline btn-primary mt-4 mb-2 text-light">Créer un article</a>
         <div class="row">
-          {% include 'Articles/_articles.html.twig' %}
+          {% include 'Articles/_articles.html.twig' with {admin:true} %}
         </div>
       </div>
     </div>

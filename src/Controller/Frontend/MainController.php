@@ -17,9 +17,9 @@ class MainController extends AbstractController
      *
      * @param ArticleRepository $repoArticle
      */
-    public function __construct(ArticleRepository $repoArticle)
-    {
-        $this->repoArticle = $repoArticle;
+    public function __construct(
+        private ArticleRepository $repoArticle
+    ) {
     }
 
     /**
@@ -32,7 +32,7 @@ class MainController extends AbstractController
     {
         // Récupère tous les articles
         $articles = $this->repoArticle->findAll();
-        
+
 
         return $this->render('Home/index.html.twig', [
             'articles' => $articles

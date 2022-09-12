@@ -8,7 +8,8 @@
     <p class="blog-card-date">{{ article.createdAt|format_datetime('full', 'none', locale = 'fr') }}</p>
     <h2 class="blog-card-header">{{ article.titre }}</h2>
     <p class="blog-card-content-description">{{ article.content }}</p>
-    <div class="row mt-2">
+    {% if admin is defined and admin is not null %}
+      <div class="row mt-2">
       <div class="col-md-6">
         <a href="{{ path('admin.article.edit', { id: article.id }) }}" class="btn btn-warning">Modifier</a>
       </div>
@@ -20,5 +21,6 @@
         </form>
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
