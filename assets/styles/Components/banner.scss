@@ -1,19 +1,20 @@
 .banner {
-    background-image: url("../../images/markus-spiske-iar-afB0QQw-unsplash.jpg");
-    background-size: cover;
-    height: 60vh;
-    
-    .header {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  background-image: url("../../images/markus-spiske-iar-afB0QQw-unsplash.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 60vh;
 
-        .title {
-            background-color: rgba(202, 78, 121, 0.644);
-            border-radius: $border-radius;
-            padding: 1em;
-            color: white;
-        }
+  .header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      background-color: $primary;
+      border-radius: $border-radius;
+      padding: 16px;
+      color: white;
     }
+  }
 }

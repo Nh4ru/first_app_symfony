@@ -1,6 +1,6 @@
 {{ form_start(form) }}
 
-{% if form.prenom is defined and form.nom is defined and form.username is defined and form.age is defined and form.email is defined and form.ville is defined %}
+{% if form.prenom is defined and form.nom is defined and form.username is defined and form.age is defined and form.mail is defined and form.ville is defined %}
   <div class="row">
     <div class="col-md-6">{{ form_row(form.prenom) }}</div>
     <div class="col-md-6">{{ form_row(form.nom) }}</div>
@@ -10,8 +10,9 @@
     <div class="col-md-3">{{ form_row(form.age) }}</div>
   </div>
 
-  {{ form_row(form.email) }}
+  {{ form_row(form.mail) }}
   {{ form_row(form.ville) }}
+  {{ form_row(form.imageFile) }}
 {% endif %}
 
 {{ form_row(form.roles) }}
