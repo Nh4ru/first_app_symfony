@@ -12,16 +12,17 @@
     {% block stylesheets %}
       {{ encore_entry_link_tags('app') }}
     {% endblock %}
-
-    {% block javascripts %}
-      {{ encore_entry_script_tags('app') }}
-    {% endblock %}
   </head>
   <body>
     {% include 'Layout/header.html.twig' %}
     <main>
+      {% include 'Layout/_flash.html.twig' %}
       {% block body %}
+
       {% endblock %}
     </main>
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
   </body>
 </html>
