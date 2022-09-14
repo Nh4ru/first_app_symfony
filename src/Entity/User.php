@@ -53,6 +53,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $imageSize = null;
 
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $imageUpdatedAt = null;
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'username' => $this->username,
+            'email' => $this->mail,
+            'roles' => $this->roles,
+            'password' => $this->password,
+            'prenom' => $this->prenom,
+            'nom' => $this->nom,
+            'ville' => $this->ville,
+            'age' => $this->age,
+            'image_name' => $this->imageName,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->username = $data['username'];
+        $this->mail = $data['email'];
+        $this->roles = $data['roles'];
+        $this->password = $data['password'];
+        $this->prenom = $data['prenom'];
+        $this->nom = $data['nom'];
+        $this->ville = $data['ville'];
+        $this->age = $data['age'];
+        $this->imageName = $data['image_name'];
+    }
+
 
     public function getId(): ?int
     {
@@ -148,6 +181,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFullName(): string
+    {
+        return "$this->prenom $this->nom";
+    }
+
     public function getAge(): ?int
     {
         return $this->age;
@@ -200,7 +238,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
+            $this->imageUpdatedAt = new \DateTimeImmutable();
         }
     }
 
@@ -228,30 +266,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->imageSize;
     }
-
-    // public function __serialize(): array
-    // {
-    //     return [
-    //         'id' => $this->id,
-    //         'email' => $this->mail,
-    //         'roles' => $this->roles,
-    //         'password' => $this->password,
-    //         'prenom' => $this->prenom,
-    //         'nom' => $this->nom,
-    //         'ville' => $this->ville,
-    //         'image_name' => $this->imageName,
-    //     ];
-    // }
-
-    // public function __unserialize(array $data)
-    // {
-    //     $this->id = $data['id'];
-    //     $this->mail = $data['email'];
-    //     $this->roles = $data['roles'];
-    //     $this->password = $data['password'];
-    //     $this->prenom = $data['prenom'];
-    //     $this->nom = $data['nom'];
-    //     $this->ville = $data['ville'];
-    //     $this->imageName = $data['image_name'];
-    // }
 }

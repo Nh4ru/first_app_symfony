@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Votre compte |
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  <pre>{{ dump(user) }}</pre>
+  <section class="container mt-4">
+    <h1 class="text-center">
+      Bonjour
+      {{ user.FullName }}
+      <div class="user-content card p-3 mt-4">
+        <div class="row align-items start">
+          <div class="col-md-4">
+            {% if user.imageName %}
+              <div class="user-image">
+                <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.FullName }}" />
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <h2>Vos informations :</h2>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <p class="mb-0">
+                  <strong>Nom :</strong>
+                  {{ user.FullName }}
+                </p>
+                <p>
+                  <strong>Email :</strong>
+                  {{ user.mail }}
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-0">
+                  <strong>Username :</strong>
+                  {{ user.username }}
+                </p>
+                <p>
+                  <strong>Ville :</strong>
+                  {{ user.ville }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </h1>
+  </section>
+{% endblock %}
