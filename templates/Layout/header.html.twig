@@ -20,7 +20,7 @@
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
 					<div class="dropdown me-2">
-  						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  						<button class="btn btn-secondary dropdown-toggle text-light text-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     					<i class="bi bi-wrench-adjustable"></i>
 						Admin
   						</button>
@@ -32,11 +32,16 @@
 					</div>
 				{% endif %}
 				<div class="navbar-btn">
-					<a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
+					<a href="{{ path('logout') }}" class="btn btn-danger text-light text-bold">
+					<i class="bi bi-door-open-fill"></i>
+					Se déconnecter
+					</a>
 				</div>
 			{% else %}
 				<div class="navbar-btn">
-					<a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
+					<a href="{{ path('login') }}" class="btn btn-secondary text-light text-bold">
+					<i class="bi bi-door-closed-fill"></i>
+					Login</a>
 				</div>
 			{% endif %}
 		</div>
