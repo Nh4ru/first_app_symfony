@@ -78,6 +78,7 @@ class RegisterFormType extends AbstractType
                 ]
             ])
             ->add('ville', TextType::class, [
+                'required' => false,
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Votre ville'
@@ -87,6 +88,20 @@ class RegisterFormType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Votre email'
+                ]
+            ])
+            ->add('address', TextType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Votre adresse'
+                ]
+            ])
+            ->add('zipCode', TextType::class, [
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Code postal'
                 ]
             ]);
     }

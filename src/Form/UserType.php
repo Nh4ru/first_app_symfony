@@ -76,6 +76,20 @@ class UserType extends AbstractType
                         'attr' => [
                             'placeholder' => 'Votre email'
                         ]
+                    ])
+                    ->add('address', TextType::class, [
+                        'required' => false,
+                        'label' => false,
+                        'attr' => [
+                            'placeholder' => 'Votre adresse'
+                        ]
+                    ])
+                    ->add('zipCode', TextType::class, [
+                        'required' => false,
+                        'label' => false,
+                        'attr' => [
+                            'placeholder' => 'Code postal'
+                        ]
                     ]);
             }
 

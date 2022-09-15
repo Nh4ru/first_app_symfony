@@ -26,10 +26,10 @@ class AppFixtures extends Fixture
             ->setAge(33)
             ->setUsername('Tristan-Fernandez')
             ->setMail('tristan-Fernandez@example.com')
-            ->setPassword('(Bass-Pearl1989)')
+            // ->setPassword('(Bass-Pearl1989)')
 
             // Nouvelle methode avec PHP 8
-            // ->setPassword($this->hasher->hashPassword($user, 'test1234'))
+            ->setPassword($this->hasher->hashPassword($user, '(Bass-Pearl1989)'))
 
             ->setRoles(['ROLE_ADMIN'])
             ->setVille('Valence');

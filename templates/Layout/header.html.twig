@@ -44,10 +44,15 @@
 					</a>
 				</div>
 			{% else %}
-				<div class="navbar-btn">
+				<div class="navbar-btn me-2">
 					<a href="{{ path('login') }}" class="btn btn-secondary text-light text-bold">
 					<i class="bi bi-door-closed-fill"></i>
 					Login</a>
+				</div>
+				<div class="navbar-btn me-2">
+					<a href="{{ path('register') }}" class="btn btn-secondary text-light text-bold">
+					<i class="bi bi-person-plus-fill"></i>
+					SignUp</a>
 				</div>
 			{% endif %}
 		</div>
