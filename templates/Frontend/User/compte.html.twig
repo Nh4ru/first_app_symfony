@@ -6,47 +6,69 @@
 {% endblock %}
 
 {% block body %}
-  <pre>{{ dump(user) }}</pre>
   <section class="container mt-4">
     <h1 class="text-center">
       Bonjour
-      {{ user.FullName }}
-      <div class="user-content card p-3 mt-4">
-        <div class="row align-items start">
-          <div class="col-md-4">
-            {% if user.imageName %}
-              <div class="user-image">
-                <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.FullName }}" />
-              </div>
-            {% endif %}
-          </div>
-          <div class="col-md-8">
-            <h2>Vos informations :</h2>
-            <div class="row mt-2">
-              <div class="col-md-6">
-                <p class="mb-0">
-                  <strong>Nom :</strong>
-                  {{ user.FullName }}
-                </p>
-                <p>
-                  <strong>Email :</strong>
-                  {{ user.mail }}
-                </p>
-              </div>
-              <div class="col-md-6">
-                <p class="mb-0">
-                  <strong>Username :</strong>
-                  {{ user.username }}
-                </p>
-                <p>
-                  <strong>Ville :</strong>
-                  {{ user.ville }}
-                </p>
-              </div>
+      {{ user.fullName }}
+    </h1>
+    <div class="user-content card p-3 mt-4">
+      <div class="row align-items-start">
+        <div class="col-md-4">
+          {% if user.imageName %}
+            <div class="user-image">
+              <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.fullName }}" />
+            </div>
+          {% endif %}
+        </div>
+        <div class="col-md-8">
+          <h2>Vos informations:</h2>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <p class="mb-0">
+                <strong>Nom:</strong>
+                {{ user.fullName }}
+              </p>
+              <p class="mb-0">
+                <strong>Age:</strong>
+                {{ user.age }}
+              </p>
+              <p>
+                <strong>Email:</strong>
+                {{ user.mail }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="mb-0">
+                <strong>Username:</strong>
+                {{ user.username }}
+              </p>
+              <p>
+                <strong>Ville:</strong>
+                {{ user.ville }}
+              </p>
             </div>
           </div>
+
+          <div class="text-center">
+            <a href="{{ path('app.user.edit') }}" class="btn btn-primary">Modifier</a>
+          </div>
+
+          {% if (user.articles|length) > 0 %}
+            <h2>Vos Articles:</h2>
+            <div class="user-list mt-2">
+              {% for article in user.articles %}
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <p class="card-text">{{ article.titre }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
         </div>
       </div>
-    </h1>
+    </div>
   </section>
 {% endblock %}
