@@ -30,7 +30,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <a href="{{ path('app_categorie_edit', { id: categorie.id }) }}" class="btn btn-warning">Modifier</a>
+                  <a href="{{ path('app_categorie_edit', { id: categorie.id }) }}" class="btn btn-warning text-light">Modifier</a>
                 </div>
                 <div class="col-md-6">
                   {% include 'Backend/Categorie/_delete_form.html.twig' %}
@@ -41,6 +41,6 @@
         </div>
       {% endfor %}
     </div>
-    <a href="{{ path('app_categorie_new') }}" class="btn btn-primary">Créer une catégorie</a>
+    <a href="{{ path('app_categorie_new') }}" class="btn btn-primary text-light">Créer une catégorie</a>
   </section>
 {% endblock %}

@@ -1,0 +1,36 @@
+.article-main-content {
+  display: flex;
+  column-gap: 2rem;
+
+  .left-column {
+    flex: 1 0 30%;
+
+    .sidebar-content {
+      display: block;
+      position: sticky;
+      top: 4rem;
+      height: 100vh;
+      overflow: scroll;
+
+      .categorie-article {
+        .list-tag {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem 0.5rem;
+
+          .tag {
+            background: $primary;
+            padding: 4px 12px;
+            border-radius: $border-radius;
+            box-shadow: $shadow;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .right-column {
+    flex: 1 0 65%;
+  }
+}

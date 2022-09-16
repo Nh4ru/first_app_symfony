@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
+
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[Vich\Uploadable]
 class Article
@@ -33,6 +34,10 @@ class Article
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
     private $createdAt;
+
+    #[ORM\Column(length: 260, unique: true)]
+    #[Gedmo\Slug(fields: ['titre'])]
+    private $slug;
 
     #[ORM\ManyToMany(targetEntity: Categorie::class, mappedBy: 'articles')]
     private $categories;
@@ -110,6 +115,11 @@ class Article
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
