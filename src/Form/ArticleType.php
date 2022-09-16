@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -41,10 +42,7 @@ class ArticleType extends AbstractType
                 'image_uri' => true,
                 'label' => 'Image : '
             ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Contenu',
-                'required' => true
-            ]);
+            ->add('content', HiddenType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

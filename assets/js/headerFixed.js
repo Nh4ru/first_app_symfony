@@ -1,3 +1,5 @@
+const navbar = document.querySelector('.navbar');
+
 window.onscroll = () => {
         if (
             document.body.scrollTop > navbar.offsetHeight ||
