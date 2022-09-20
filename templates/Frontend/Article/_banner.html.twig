@@ -1,7 +1,4 @@
 {% for image in article.images|slice(0, 1) %}
-  <div class="banner-image" style="background-image: url('{{ vich_uploader_asset(image, 'imageFile') }}');">
-    <div class="header">
-      <h1>{{ article.titre }}</h1>
-    </div>
-  </div>
+  {% set imgSrc = "style='background-image: url(" ~ vich_uploader_asset(image, 'imageFile') ~ ");'" %}
+  {% include 'Components/_headerBanner.html.twig' with { styleImage: imgSrc, headerBanner: article.titre } %}
 {% endfor %}

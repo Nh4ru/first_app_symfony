@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-  {% include 'Frontend/Home/_banner.html.twig' %}
+  {% include 'Components/_headerBanner.html.twig' with { home: true, headerBanner: 'WELCOME ON MY SYMFONY APP' } %}
   <div class="container mt-4">
     {% include 'Components/_articles.html.twig' %}
   </div>

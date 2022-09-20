@@ -7,26 +7,385 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
   .header {
     position: absolute;
     z-index: 3;
-    left: 50%;
+    width: 30%;
+    left: 0;
+    right: 0;
     top: 50%;
+    margin: auto;
     text-align: center;
-    padding: 1rem 2.5rem;
-    transform: translate(-50%, -50%);
+    transform: translate(-50% -50%);
     border-radius: $border-radius;
-    background: $primary;
     box-shadow: $shadow;
     backdrop-filter: $blur;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Ii8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHJhZGlhbEdyYWRpZW50IGlkPSJsZXNzaGF0LWdlbmVyYXRlZCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSI1MCUiIGN5PSI1MCUiIHI9Ijc1JSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGFkYWRhIiBzdG9wLW9wYWNpdHk9IjEiLz48L3JhZGlhbEdyYWRpZW50PjxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNsZXNzaGF0LWdlbmVyYXRlZCkiIC8+PC9zdmc+);
+    background-image: -webkit-radial-gradient(
+      center,
+      ellipse,
+      $color-opacity 0%,
+      $color-opacity 100%
+    );
+    background-image: -moz-radial-gradient(
+      center,
+      ellipse,
+      $color-opacity 0%,
+      $color-opacity 100%
+    );
+    background-image: -o-radial-gradient(
+      center,
+      ellipse,
+      $color-opacity 0%,
+      $color-opacity 100%
+    );
+    background-image: radial-gradient(
+      ellipse at center,
+      $color-opacity 0%,
+      $color-opacity 100%
+    );
 
-    h1 {
-      font-size: 36px;
-      color: $white;
+    .title {
+      height: 12vh;
+      border-radius: $border-radius;
+      padding: 12px;
+      font-weight: 800;
+      font-size: 3em;
+      background-repeat: no-repeat;
+      background-image: url(//caraujo_pens.surge.sh/images/etCU2ay.jpg),
+        url(//caraujo_pens.surge.sh/images/vA5Po3T.jpg),
+        url(//caraujo_pens.surge.sh/images/UKyeAW3.jpg),
+        url(//caraujo_pens.surge.sh/images/cjqabZU.jpg),
+        url(//caraujo_pens.surge.sh/images/qKMt0VM.jpg),
+        url(//caraujo_pens.surge.sh/images/c5PTClN.jpg),
+        url(//caraujo_pens.surge.sh/images/BgQ3vcZ.jpg),
+        url(//caraujo_pens.surge.sh/images/5cfSL2b.jpg);
+      background-size: 100% auto, 100% auto, 100% auto, 100% auto, 100% auto,
+        100% auto, 100% auto, 100% auto;
+      background-position: center 0, center 356.45095168px,
+        center 712.90190337px, center 1069.35285505px, center 1425.80380673px,
+        center 1782.25475842px, center 2138.7057101px, center 2495.15666179px;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: rgba(0, 0, 0, 0);
+      border: 4px solid $color-opacity;
+      background-color: $color-opacity;
+
+      :before {
+        content: attr(data-bf);
+        position: absolute;
+        font-weight: 800;
+        color: #777777;
+        font-size: 4em;
+        line-height: 1;
+      }
+
+      &:hover {
+        cursor: default;
+        -webkit-animation: chngbg 0.8s infinite;
+        -moz-animation: chngbg 0.8s infinite;
+        -ms-animation: chngbg 0.8s infinite;
+        animation: chngbg 0.8s infinite;
+
+        @-moz-keyframes chngbg {
+          0% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.4% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.5% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          24.9% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          25% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.4% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.5% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          49.9% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          50% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.4% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.5% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          74.9% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          75% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          87.4% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          88.5% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+          100% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+        }
+        @-webkit-keyframes chngbg {
+          0% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.4% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.5% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          24.9% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          25% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.4% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.5% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          49.9% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          50% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.4% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.5% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          74.9% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          75% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          87.4% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          88.5% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+          100% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+        }
+        @keyframes chngbg {
+          0% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.4% {
+            background-position: center 0, center 356.45095168px,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          12.5% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          24.9% {
+            background-position: center -356.45095168px, center 0,
+              center 712.90190337px, center 1069.35285505px,
+              center 1425.80380673px, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          25% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.4% {
+            background-position: center -712.90190337px, center -356.45095168px,
+              center 0, center 1069.35285505px, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          37.5% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          49.9% {
+            background-position: center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1425.80380673px,
+              center 1782.25475842px, center 2138.7057101px,
+              center 2495.15666179px;
+          }
+          50% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.4% {
+            background-position: center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0, center 1782.25475842px,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          62.5% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          74.9% {
+            background-position: center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2138.7057101px, center 2495.15666179px;
+          }
+          75% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          87.4% {
+            background-position: center -2138.7057101px, center -1782.25475842px,
+              center -1425.80380673px, center -1069.35285505px,
+              center -712.90190337px, center -356.45095168px, center 0,
+              center 2495.15666179px;
+          }
+          88.5% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+          100% {
+            background-position: center -2495.15666179px, center -2138.7057101px,
+              center -1782.25475842px, center -1425.80380673px,
+              center -1069.35285505px, center -712.90190337px,
+              center -356.45095168px, center 0;
+          }
+        }
+      }
     }
   }
 
