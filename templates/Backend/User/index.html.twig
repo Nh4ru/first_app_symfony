@@ -10,32 +10,32 @@
     <h1 class="text-center">Admin des users</h1>
 
     <table class="table mt-4">
-        <thead>
-            <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Role</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for user in users %}
-            <tr>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.mail }}</td>
-                <td>{{ user.age }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : ''}}</td>
-                <td>
-                    {% include "Backend/User/_actions.html.twig" %}
-                </td>
-            </tr>
+          <tr>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.mail }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.roles ? user.roles|json_encode:'' }}</td>
+            <td>
+              {% include 'Backend/User/_actions.html.twig' %}
+            </td>
+          </tr>
         {% endfor %}
-        </tbody>
+      </tbody>
     </table>
   </div>
 {% endblock %}
