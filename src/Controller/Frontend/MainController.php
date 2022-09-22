@@ -31,7 +31,7 @@ class MainController extends AbstractController
     public function index()
     {
         // Récupère tous les articles
-        $articles = $this->repoArticle->findAll();
+        $articles = $this->repoArticle->findLatestArticleWithLimit(6);
 
 
         return $this->render('Frontend/Home/index.html.twig', [
