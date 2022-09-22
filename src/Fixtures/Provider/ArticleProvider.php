@@ -10,7 +10,7 @@ class ArticleProvider
 {
     private Generator $faker;
 
-    private function __construct(Generator $faker)
+    public function __construct(Generator $faker)
     {
         $this->faker = Factory::create('fr-FR');
     }
