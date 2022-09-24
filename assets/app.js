@@ -19,3 +19,6 @@ import './js/swiperArticle';
 require('bootstrap');
 
 import './images/Vintage-Tristan-Fernandez-1000px.png';
+import './images/icons8-instagram-50.png';
+import './images/icons8-youtube-50.png';
+import './images/icons8-linkedin-50.png';

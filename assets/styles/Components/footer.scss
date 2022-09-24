@@ -1,13 +1,11 @@
 .personnal {
   height: 10vh;
   border: 1px solid transparent;
-  border-image: $border-gradient2;
+  border-image: $border-gradient-footer;
 }
 
 .radius {
   margin: auto;
-  width: 4vw;
-  color: white;
   vertical-align: middle;
   text-align: center;
 }
