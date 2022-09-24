@@ -26,7 +26,7 @@ class CategorieType extends AbstractType
                 'label' => 'Active',
                 'required' => false,
             ])
-            ->add('enable', ColorType::class, [
+            ->add('color', ColorType::class, [
                 'label' => 'Color',
                 'required' => true,
                 'attr' => [
