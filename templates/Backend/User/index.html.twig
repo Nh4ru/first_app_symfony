@@ -12,6 +12,7 @@
     <table class="table mt-4">
       <thead>
         <tr>
+          <th>Image</th>
           <th>Prénom</th>
           <th>Nom</th>
           <th>Username</th>
@@ -24,7 +25,14 @@
       <tbody>
         {% for user in users %}
           <tr>
-            <td>{{ user.prenom }}</td>
+            <td class="user-content">
+              <div class="user-image">
+                <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="align-items-center">{{ user.prenom }}</div>
+            </td>
             <td>{{ user.nom }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.mail }}</td>

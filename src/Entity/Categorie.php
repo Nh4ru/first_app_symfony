@@ -24,6 +24,9 @@ class Categorie
     #[ORM\ManyToMany(targetEntity: Article::class, inversedBy: 'categories')]
     private $articles;
 
+    #[ORM\Column(length: 10)]
+    private ?string $color = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -78,6 +81,18 @@ class Categorie
     public function removeArticle(Article $article): self
     {
         $this->articles->removeElement($article);
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

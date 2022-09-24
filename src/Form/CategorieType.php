@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +25,13 @@ class CategorieType extends AbstractType
             ->add('enable', CheckboxType::class, [
                 'label' => 'Active',
                 'required' => false,
+            ])
+            ->add('enable', ColorType::class, [
+                'label' => 'Color',
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'Couleur de la catégorie'
+                ]
             ]);
     }
 
