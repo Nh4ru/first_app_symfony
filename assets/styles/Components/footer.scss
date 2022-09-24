@@ -1,0 +1,25 @@
+.personnal {
+  height: 10vh;
+  border: 1px solid transparent;
+  border-image: $border-gradient2;
+}
+
+.radius {
+  margin: auto;
+  width: 4vw;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
+.radius:hover {
+  /* Rotate  */
+  -webkit-transform: rotate(1440deg);
+  -moz-transform: rotate(1440deg);
+  -o-transform: rotate(1440deg);
+  transform: rotate(1440deg);
+  /* transition  */
+  -webkit-transition: all 10s linear;
+  -moz-transition: all 10s linear;
+  -o-transition: all 10s linear;
+  transition: all 10s linear;
+}
