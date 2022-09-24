@@ -22,7 +22,11 @@
           <div class="blog-card-content">
             <div class="row align-items-center">
               <div class="col-md-6">{{ categorie.titre }}</div>
-              <div class="col-md-6">{{ categorie.color }}</div>
+              <div class="col-md-6" style="color:{{ categorie.color }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z" />
+                </svg>
+              </div>
               <div class="col-md-6">
                 <div class="form-check form-switch">
                   <input class="form-check-input" type="checkbox" role="switch" value="{{ categorie.id }}" data-switch-active-tag {{ categorie.enable ? 'checked' }} />

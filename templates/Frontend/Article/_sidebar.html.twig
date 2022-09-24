@@ -18,10 +18,10 @@
         <h2>Catégories :</h2>
         <div class="list-tag">
           {% for categorie in article.categories %}
-            <p class="tag">
-              <i class="bi bi-tags-fill"></i>
+            <div class="tag" style="background-color:{{ categorie.color }}">
+              <i class="bi bi-tags-fill text-bold"></i>
               {{ categorie.titre }}
-            </p>
+            </div>
           {% endfor %}
         </div>
       </div>
