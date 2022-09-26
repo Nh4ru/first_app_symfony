@@ -8,6 +8,13 @@ namespace App\Data;
 class SearchData
 {
     /**
+     * The number of the page search
+     *
+     * @var integer|null
+     */
+    private ?int $page = 1;
+
+    /**
      * The content of the query for title posts
      *
      * @var string|null
@@ -98,6 +105,30 @@ class SearchData
     public function setAuthor($author)
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get the number of the page search
+     *
+     * @return  integer|null
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Set the number of the page search
+     *
+     * @param  integer|null  $page  The number of the page search
+     *
+     * @return  self
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
 
         return $this;
     }

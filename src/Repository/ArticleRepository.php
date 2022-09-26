@@ -2,10 +2,12 @@
 
 namespace App\Repository;
 
-use App\Data\SearchData;
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -17,8 +19,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        private PaginatorInterface $paginator
+    ) {
         parent::__construct($registry, Article::class);
     }
 
@@ -61,9 +65,10 @@ class ArticleRepository extends ServiceEntityRepository
     /**
      * Method custom for search posts with categorie and author
      *
-     * @return array
+     * @param SearchData
+     * @return PaginationInterface object with pagination for post
      */
-    public function findSearchData(SearchData $search): array
+    public function findSearchData(SearchData $search): PaginationInterface
     {
         $query = $this->createQueryBuilder('a')
             ->select('a', 'u', 'c', 'co', 'i')
@@ -90,8 +95,13 @@ class ArticleRepository extends ServiceEntityRepository
                 ->setParameter('users', $search->getAuthor());
         }
 
-        return $query->getQuery()
-            ->getResult();
+        $query = $query->getQuery();
+
+        return $this->paginator->paginate(
+            $query, /* La requête et non le result*/
+            $search->getPage(), /* Numéro de la page */
+            6 /* Nombre d'éléments par page */
+        );
     }
 
     //    /**

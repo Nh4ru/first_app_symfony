@@ -12,7 +12,14 @@
         {% include 'Components/_filter.html.twig' with { form: form } only %}
       </div>
       <div class="col-md-9">
+        <div class="d-flex justify-content-between mb-2 navigation-blog-list">
+          {% include 'Components/_count.html.twig' %}
+          <div class="d-flex justify-content-end gap-2">
+            {% include 'Components/_sortable.html.twig' %}
+          </div>
+        </div>
         {% include 'Components/_articles.html.twig' %}
+        {% include 'Components/_pagination.html.twig' %}
       </div>
     </div>
   </section>

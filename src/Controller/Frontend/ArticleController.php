@@ -24,6 +24,9 @@ class ArticleController extends AbstractController
     {
         $data = new SearchData;
 
+        $page = $request->get('page', 1);
+        $data->setPage($page);
+
         $form = $this->createForm(SearchArticleType::class, $data);
         $form->handleRequest($request);
 
