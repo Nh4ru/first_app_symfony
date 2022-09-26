@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -54,6 +55,42 @@ class ArticleRepository extends ServiceEntityRepository
             ->orderBy('a.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Method custom for search posts with categorie and author
+     *
+     * @return array
+     */
+    public function findSearchData(SearchData $search): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a', 'u', 'c', 'co', 'i')
+            ->join('a.user', 'u')
+            ->leftJoin('a.categories', 'c')
+            ->leftJoin('a.comments', 'co')
+            ->leftJoin('a.images', 'i');
+
+        if (!empty($search->getQuery())) {
+            $query = $query->andWhere('a.titre LIKE :titre')
+                /**
+                 * "%%" partial search SQL
+                 */
+                ->setParameter('titre', "%{$search->getQuery()}%");
+        }
+
+        if (!empty($search->getCategories())) {
+            $query = $query->andWhere('c.id IN(:tags)')
+                ->setParameter('tags', $search->getCategories());
+        }
+
+        if (!empty($search->getAuthor())) {
+            $query = $query->andWhere('u.id IN(:users)')
+                ->setParameter('users', $search->getAuthor());
+        }
+
+        return $query->getQuery()
             ->getResult();
     }
 
