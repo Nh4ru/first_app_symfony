@@ -12,6 +12,10 @@
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
   margin: auto;
   border-radius: $border-radius;
   justify-content: center;
@@ -41,9 +45,10 @@
   );
 
   .title {
-    height: 12vh;
+    //height: 12vh;
+    // width: auto;
     border-radius: $border-radius;
-    padding: 22px;
+    padding: 1.5rem 2rem;
     font-weight: 800;
     font-size: 3em;
     background-repeat: no-repeat;
@@ -380,9 +385,9 @@
   }
 }
 
-// .header h1:hover {
-//   -webkit-animation: chngbg 0.8s infinite;
-//   -moz-animation: chngbg 0.8s infinite;
-//   -ms-animation: chngbg 0.8s infinite;
-//   animation: chngbg 0.8s infinite;
-// }
+.header h1:hover {
+  -webkit-animation: chngbg 0.8s infinite;
+  -moz-animation: chngbg 0.8s infinite;
+  -ms-animation: chngbg 0.8s infinite;
+  animation: chngbg 0.8s infinite;
+}

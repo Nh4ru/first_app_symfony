@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container mt-4">
+  <div class="container-fluid mt-4">
     <h1 class="text-center">Admin des users</h1>
 
     <table class="table mt-4">
@@ -37,7 +37,7 @@
             <td>{{ user.username }}</td>
             <td>{{ user.mail }}</td>
             <td>{{ user.age }}</td>
-            <td>{{ user.roles ? user.roles|json_encode:'' }}</td>
+            <td class="d-flex flex-column">{{ user.roles ? user.roles|json_encode:'' }}</td>
             <td>
               {% include 'Backend/User/_actions.html.twig' %}
             </td>
