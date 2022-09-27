@@ -8,6 +8,8 @@
 {% block body %}
   {% include 'Components/_headerBanner.html.twig' with { home: true, headerBanner: 'WELCOME ON MY SYMFONY APP' } %}
   <div class="container mt-4">
-    {% include 'Components/_articles.html.twig' %}
+    <div class="blog-list">
+      {% include 'Components/_articles.html.twig' %}
+    </div>
   </div>
 {% endblock %}
