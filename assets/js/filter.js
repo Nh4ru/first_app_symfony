@@ -1,3 +1,4 @@
+import { Flipper, spring } from 'flip-toolkit';
 import { debounce } from "lodash";
 
 /**
@@ -129,11 +130,7 @@ export default class Filter
             const data = await response.json();
             console.error(data);
 
-            if (append) {
-                this.content.innerHTML += data.content;
-            } else {
-                this.content.innerHTML = data.content;
-            }
+            this.flipContent(data.content, append);
 
             if (!this.moreNav) {
                 this.pagination.innerHTML = data.pagination;
@@ -154,6 +151,49 @@ export default class Filter
         }
 
         this.hideLoader();
+    }
+
+    /**
+     * Replace all posts card with animation
+     */
+    flipContent(content, append) {
+        
+        const flipper = new Flipper({
+            element: this.content
+        });
+
+        let cards = this.content.children;
+
+        for (let card of cards) {
+            flipper.addFlipped({
+                element: card,
+                flipId: card.id,
+                shouldFlip: false,
+            })
+        }
+
+        // record positions before they change
+        flipper.recordBeforeUpdate();
+
+        // modify the content
+        if (append) {
+            this.content.innerHTML += content;
+        } else {
+            this.content.innerHTML = content;
+        }
+
+        cards = this.content.children;
+
+        for (let card of cards) {
+            flipper.addFlipped({
+                element: card,
+                flipId: card.id
+
+            });
+        }
+
+        // record new positions, and begin animations
+        flipper.update();
     }
 
     /**
