@@ -9,6 +9,7 @@ import { debounce } from "lodash";
  * @property {HTMLFormElement} form - the count element
  * @property {HTMLElement} count - The count element
  * @property {HTMLElement} page - The page number
+ * @property {bool} moreNav - If the navigation is with button show more
  */
 export default class Filter
 {
@@ -26,6 +27,7 @@ export default class Filter
         this.form = element.querySelector('.js-filter-form');
         this.count = element.querySelector('.js-filter-count');
         this.page = parseInt(new URLSearchParams(window.location.search).get('page') || 1);
+        this.moreNav = this.page == 1;
         this.bindEvents();
     }
 
@@ -51,6 +53,13 @@ export default class Filter
             }
         }
 
+        if (this.moreNav) {
+            this.pagination.innerHTML = `<button class="btn btn-primary mt-2 btn-show-more">Voir Plus</button>`;
+            this.pagination.querySelector('button').addEventListener('click', this.loadMore.bind(this));
+        } else {
+            this.pagination.addEventListener('click', linkClickListener);
+        }
+
         this.sortable.addEventListener('click', (e) => {
             linkClickListener(e);
         });
@@ -63,6 +72,24 @@ export default class Filter
         this.form.querySelectorAll('input[type="checkbox"]').forEach((input) => {
             input.addEventListener('change', debounce(this.loadForm.bind(this), 600));
         });
+    }
+
+    /**
+     * Load more elements on the page
+     */
+    async loadMore() {
+        const button = this.pagination.querySelector('button');
+        button.setAttribute('disabled', 'disabled');
+
+        this.page++;
+
+        const url = new URL(window.location.href);
+        const params = new URLSearchParams(url.search);
+        params.set('page', this.page);
+
+        await this.loadUrl(url.pathname + '?' + params.toString(), true);
+
+        button.removeAttribute('disabled');
     }
 
     async loadForm() {
@@ -79,7 +106,7 @@ export default class Filter
         return this.loadUrl(url.pathname + '?' + params.toString()); 
     }
 
-    async loadUrl(url) {
+    async loadUrl(url, append = false) {
         this.showLoader();
         
         const params = new URLSearchParams(url.split('?')[1] || '');
@@ -102,10 +129,22 @@ export default class Filter
             const data = await response.json();
             console.error(data);
 
-            this.content.innerHTML = data.content;
+            if (append) {
+                this.content.innerHTML += data.content;
+            } else {
+                this.content.innerHTML = data.content;
+            }
+
+            if (!this.moreNav) {
+                this.pagination.innerHTML = data.pagination;
+            } else if (this.page == data.pages) {
+                this.pagination.style.display = 'none';
+            } else {
+                this.pagination.style.display = null;
+            }
+
             this.sortable.innerHTML = data.sortable;
             this.count.innerHTML = data.count;
-            this.pagination.innerHTML = data.pagination;
 
             params.delete('ajax'),
             history.replaceState({}, '', url.split('?')[0] + '?' + params.toString());

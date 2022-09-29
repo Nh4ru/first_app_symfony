@@ -24,10 +24,9 @@ class MainController extends AbstractController
 
     /**
      * Affiche la page d'acceuil
-     *
-     * @Route("/", name="home")
      * @return Response
      */
+    #[Route('', name: 'home')]
     public function index()
     {
         // Récupère tous les articles
@@ -35,7 +34,8 @@ class MainController extends AbstractController
 
 
         return $this->render('Frontend/Home/index.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'currentPage' => 'home',
         ]);
     }
 }

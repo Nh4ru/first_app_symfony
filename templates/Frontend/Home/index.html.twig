@@ -8,6 +8,8 @@
 {% block body %}
   {% include 'Components/_headerBanner.html.twig' with { home: true, headerBanner: 'WELCOME ON MY SYMFONY APP' } %}
   <div class="container mt-4">
+    <h2 class="text-center">Nos derniers articles</h2>
+    <a class="col-md-2 btn btn-primary text-light p-2" aria-current="page" href="{{ path('app.article.index') }}">Voir les articles</a>
     <div class="blog-list">
       {% include 'Components/_articles.html.twig' %}
     </div>

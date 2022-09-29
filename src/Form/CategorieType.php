@@ -27,11 +27,8 @@ class CategorieType extends AbstractType
                 'required' => false,
             ])
             ->add('color', ColorType::class, [
-                'label' => 'Color',
+                'label' => 'Couleur de la catégorie',
                 'required' => true,
-                'attr' => [
-                    'placeholder' => 'Couleur de la catégorie'
-                ]
             ]);
     }
 
