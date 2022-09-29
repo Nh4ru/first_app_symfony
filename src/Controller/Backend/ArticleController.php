@@ -42,7 +42,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(SearchArticleType::class, $data);
         $form->handleRequest($request);
 
-        $articles = $this->repoArticle->findSearchData($data);
+        $articles = $this->repoArticle->findSearchData($data, false);
 
         if ($request->get('ajax')) {
             return new JsonResponse([
@@ -156,6 +156,18 @@ class ArticleController extends AbstractController
         $this->repoComment->add($comment, true);
 
         return new Response('Visibilité changée avec succès', 201);
+    }
+
+    #[Route('/article/switch/{id}', name: 'admin.article.switch', methods: ['GET'])]
+    public function switchVisibilityArticle(?Article $article): Response
+    {
+        if ($article instanceof Article) {
+            $article->setActive(!$article->isActive());
+            $this->repoArticle->add($article, true);
+
+            return new Response('Visibility changed', 201);
+        }
+        return new Response('Article not found', 404);
     }
 
     #[Route('/{id}/comments/delete', name: 'admin.comments.delete', methods: ['POST', 'DELETE'])]

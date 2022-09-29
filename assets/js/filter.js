@@ -1,5 +1,6 @@
 import { Flipper, spring } from 'flip-toolkit';
 import { debounce, delay } from "lodash";
+import visibilityArticles from './switchVisibilityArticle';
 
 /**
  * Class filter for search post in ajax
@@ -227,6 +228,7 @@ export default class Filter
 
         // record new positions, and begin animations
         flipper.update();
+        visibilityArticles();
     }
 
     /**
