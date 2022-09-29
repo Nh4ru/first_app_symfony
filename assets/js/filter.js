@@ -134,10 +134,10 @@ export default class Filter
 
             if (!this.moreNav) {
                 this.pagination.innerHTML = data.pagination;
-            } else if (this.page == data.pages || this.content.querySelector('#article-no-response')) {
+            } else if (this.page == data.pages || this.content.children.item(0) === this.content.children.namedItem('article-no-response')) {
                 this.pagination.style.display = 'none';
             } else {
-                this.pagination.style.display = null;
+                this.pagination.style.display = 'block';
             }
 
             this.sortable.innerHTML = data.sortable;
