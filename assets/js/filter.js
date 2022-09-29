@@ -1,5 +1,5 @@
 import { Flipper, spring } from 'flip-toolkit';
-import { debounce } from "lodash";
+import { debounce, delay } from "lodash";
 
 /**
  * Class filter for search post in ajax
@@ -134,7 +134,7 @@ export default class Filter
 
             if (!this.moreNav) {
                 this.pagination.innerHTML = data.pagination;
-            } else if (this.page == data.pages) {
+            } else if (this.page == data.pages || this.content.querySelector('#article-no-response')) {
                 this.pagination.style.display = 'none';
             } else {
                 this.pagination.style.display = null;
@@ -145,7 +145,7 @@ export default class Filter
 
             params.delete('ajax'),
             history.replaceState({}, '', url.split('?')[0] + '?' + params.toString());
-            
+
         } else {
             console.error(response);
         }
@@ -157,6 +157,36 @@ export default class Filter
      * Replace all posts card with animation
      */
     flipContent(content, append) {
+        const springName = 'veryGentle';
+        const exitSpring = function (element, index, onComplete) {
+            spring({
+                config: 'stiff',
+                values: {
+                    translateY: [0, -20],
+                    opacity: [1, 0]
+                },
+                onUpdate: ({ translateY, opacity }) => {
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.opacity = opacity;
+                },
+                onComplete
+            });
+        }
+
+        const appearSpring = function (element, index) {
+            spring({
+                config: 'stiff',
+                values: {
+                    translateY: [20, 0],
+                    opacity: [0, 1]
+                },
+                onUpdate: ({ translateY, opacity }) => {
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.opacity = opacity;
+                },
+                delay: index * 15,                
+            })
+        }
         
         const flipper = new Flipper({
             element: this.content
@@ -169,6 +199,8 @@ export default class Filter
                 element: card,
                 flipId: card.id,
                 shouldFlip: false,
+                spring: springName,
+                onExit: exitSpring
             })
         }
 
@@ -187,8 +219,9 @@ export default class Filter
         for (let card of cards) {
             flipper.addFlipped({
                 element: card,
-                flipId: card.id
-
+                flipId: card.id,
+                spring: springName,
+                onAppear: appearSpring
             });
         }
 
