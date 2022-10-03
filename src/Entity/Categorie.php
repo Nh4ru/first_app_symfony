@@ -21,15 +21,19 @@ class Categorie
     #[ORM\Column(type: 'boolean')]
     private $enable;
 
+    #[ORM\Column(length: 10)]
+    private ?string $color = null;
+
     #[ORM\ManyToMany(targetEntity: Article::class, inversedBy: 'categories')]
     private $articles;
 
-    #[ORM\Column(length: 10)]
-    private ?string $color = null;
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: SubCategorie::class)]
+    private Collection $subCategories;
 
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->subCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,6 +97,36 @@ class Categorie
     public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubCategorie>
+     */
+    public function getSubCategories(): Collection
+    {
+        return $this->subCategories;
+    }
+
+    public function addSubCategory(SubCategorie $subCategory): self
+    {
+        if (!$this->subCategories->contains($subCategory)) {
+            $this->subCategories->add($subCategory);
+            $subCategory->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubCategory(SubCategorie $subCategory): self
+    {
+        if ($this->subCategories->removeElement($subCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($subCategory->getCategorie() === $this) {
+                $subCategory->setCategorie(null);
+            }
+        }
 
         return $this;
     }
