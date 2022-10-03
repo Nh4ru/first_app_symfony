@@ -5,6 +5,7 @@ namespace App\Tests\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
+use Symfony\Component\DomCrawler\Crawler;
 
 class ArticleFrontEndControllerTest extends WebTestCase
 {
@@ -30,5 +31,24 @@ class ArticleFrontEndControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         /* OU */
         //$this->assertResponseIsSuccesful();
+    }
+
+    public function getPage(): Crawler
+    {
+        return $this->client->request('GET', '/article/liste');
+    }
+
+    public function testFormArticleListPage()
+    {
+        $this->getPage();
+
+        $this->assertSelectorExists('form.form-filter');
+    }
+
+    public function testNumberArticlelistPage()
+    {
+        $crawler = $this->getPage();
+
+        $this->assertCount(6, $crawler->filter('.blog-card'));
     }
 }

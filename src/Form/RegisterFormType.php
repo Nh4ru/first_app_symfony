@@ -40,7 +40,7 @@ class RegisterFormType extends AbstractType
                         ]),
                         new Regex([
                             'pattern' => '/^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/',
-                            'message' => 'Votre mot de passe doit comporter au moins 6 caractères, une lettre majuscule, une lettre miniscule et 1 chiffre sans espace blanc'
+                            'message' => 'Votre mot de passe doit comporter au moins 6 caractères, une lettre majuscule, une lettre minuscule et 1 chiffre sans espace blanc'
                         ])
                     ]
                 ],
@@ -49,7 +49,7 @@ class RegisterFormType extends AbstractType
                     'attr' => [
                         'placeholder' => 'Repetez votre mot de passe'
                     ],
-                    'invalid_message' => 'Les mots de passe doivent être idetiques',
+                    'invalid_message' => 'Les mots de passe doivent être identiques',
                 ],
                 'mapped' => false,
             ])
