@@ -112,6 +112,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         pattern: '/^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/',
         message: 'Veuillez rentrer un code postal valide.'
     )]
+    #[Assert\Length(
+        max: 20,
+        maxMessage: 'Code postal ne peut dépasser {{ limit }} caractères.'
+    )]
     private ?string $zipCode = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comment::class, orphanRemoval: true)]
