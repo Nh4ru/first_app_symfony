@@ -68,11 +68,15 @@ class Article
     #[ORM\Column]
     private ?bool $active = null;
 
+    #[ORM\ManyToMany(targetEntity: SubCategorie::class, mappedBy: 'article')]
+    private Collection $subCategories;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->subCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -240,6 +244,33 @@ class Article
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubCategorie>
+     */
+    public function getSubCategories(): Collection
+    {
+        return $this->subCategories;
+    }
+
+    public function addSubCategory(SubCategorie $subCategory): self
+    {
+        if (!$this->subCategories->contains($subCategory)) {
+            $this->subCategories->add($subCategory);
+            $subCategory->addArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubCategory(SubCategorie $subCategory): self
+    {
+        if ($this->subCategories->removeElement($subCategory)) {
+            $subCategory->removeArticle($this);
+        }
 
         return $this;
     }

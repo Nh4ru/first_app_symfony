@@ -10,8 +10,12 @@
   {{ encore_entry_link_tags('admin') }}
 {% endblock %}
 
+{% block javascripts %}
+  {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
 {% block body %}
-  <section class="container-fluid mt-4">
+  <section class="container mt-4">
     <h1 class="text-center">Admin des sous-catégories</h1>
     <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
       {% for subCategorie in subCategories %}
@@ -20,9 +24,15 @@
             <div class="row align-items-center">
               <div class="col-md-6">{{ subCategorie.titre }}</div>
               <div class="col-md-6" style="color:{{ subCategorie.color }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
                   <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z" />
                 </svg>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" value="{{ subCategorie.id }}" data-switch-active-tag {{ subCategorie.enable ? 'checked' }} />
+                  <label class="form-check-label">Active</label>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -37,5 +47,6 @@
         </div>
       {% endfor %}
     </div>
+    <a href="{{ path('app_sub_categorie_new') }}" class="btn btn-primary text-light">Créer une sous-catégorie</a>
   </section>
 {% endblock %}

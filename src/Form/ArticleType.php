@@ -4,17 +4,14 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Categorie;
+use App\Entity\SubCategorie;
 use App\Form\ArticleImageType;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ArticleType extends AbstractType
@@ -29,6 +26,17 @@ class ArticleType extends AbstractType
             ->add('categories', CategorieAutocompleteField::class, [
                 'label' => 'Categories:',
 
+            ])
+            // ->add('subCategorie', EntityType::class, [
+            //     'label' => 'Sous-Catégorie',
+            //     'class' => SubCategorie::class,
+            //     'multiple' => false,
+            //     'expanded' => false,
+            //     'choice_label' => true,
+            // ])
+            ->add('active', CheckboxType::class, [
+                'label' => 'Active',
+                'required' => false,
             ])
             ->add('images', CollectionType::class, [
                 'entry_type' => ArticleImageType::class,

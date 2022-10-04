@@ -24,7 +24,7 @@
   <div id="ckeditor" class="ckeditor-input">{{ form.content.vars.value|raw }}</div>
   {{ form_row(form.content) }}
 </div>
-
+<div class="mb-3">{{ form_row(form.active) }}</div>
 <div class="text-center">
   <button class="btn btn-primary btn-inline">{{ button_label|default('Save') }}</button>
 </div>

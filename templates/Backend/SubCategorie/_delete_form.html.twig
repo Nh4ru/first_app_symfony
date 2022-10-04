@@ -1,1 +1,4 @@
-<h1>Suppression subCat</h1>
+<form method="post" action="{{ path('app_sub_categorie_delete', { id: subCategorie.id }) }}" onsubmit="return confirm('Voulez vous vraiment supprimer cette catégorie');">
+  <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ subCategorie.id) }}" />
+  <button class="btn btn-danger text-light">Supprimer</button>
+</form>

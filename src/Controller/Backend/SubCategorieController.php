@@ -56,4 +56,28 @@ class SubCategorieController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}', name: 'app_sub_categorie_delete', methods: ['POST'])]
+    public function delete(Request $request, SubCategorie $subCategorie, SubCategorieRepository $subCategorieRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $subCategorie->getId(), $request->request->get('_token'))) {
+            $subCategorieRepository->remove($subCategorie, true);
+        }
+
+        return $this->redirectToRoute('app_sub_categorie_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/switch/{id}', name: 'app_sub_categorie_visibility', methods: "GET")]
+    public function switchVisibilityTag(?SubCategorie $subCategorie, SubCategorieRepository $SubCategorieRepository)
+    {
+        if (!$subCategorie instanceof SubCategorie) {
+            return new Response('Categorie non trouvé', 404);
+        } else {
+            $subCategorie->setEnable(!$subCategorie->isEnable());
+            //$categorie->isEnable() ? $categorie->setEnable(false) : $categorie->setEnable(true);
+            $SubCategorieRepository->add($subCategorie, true);
+
+            return new Response('Visibility changed', 201);
+        }
+    }
 }
