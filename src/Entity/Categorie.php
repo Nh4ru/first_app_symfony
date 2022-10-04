@@ -30,6 +30,11 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: SubCategorie::class)]
     private Collection $subCategories;
 
+    // public function __toString()
+    // {
+    //     return "$this->subCategories";
+    // }
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
