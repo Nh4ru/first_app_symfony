@@ -38,4 +38,22 @@ class SubCategorieController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}/edit', name: 'app_sub_categorie_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, SubCategorie $subCategorie, SubCategorieRepository $subCategorieRepository): Response
+    {
+        $form = $this->createForm(SubCategorieType::class, $subCategorie);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $subCategorieRepository->save($subCategorie, true);
+
+            return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('Backend/SubCategorie/edit.html.twig', [
+            'subCategorie' => $subCategorie,
+            'form' => $form,
+        ]);
+    }
 }

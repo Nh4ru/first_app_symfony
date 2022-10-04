@@ -1,1 +1,31 @@
-<h1>Edit subCat</h1>
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  Edit Sous-Categorie |
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+  <section class="container mt-4">
+    <div class="card p-3 w-50 mx-auto">
+      <h1 class="text-center">
+        Editer
+        {{ subCategorie.titre }}
+      </h1>
+
+      {% include 'Backend/SubCategorie/_form.html.twig' with { button_label: 'Modifier' } %}
+      <div class="text-end">
+        {% include 'Backend/SubCategorie/_delete_form.html.twig' %}
+      </div>
+    </div>
+    <a href="{{ path('app_sub_categorie_index') }}" class="btn btn-primary text-light">Retour à la liste</a>
+  </section>
+{% endblock %}
