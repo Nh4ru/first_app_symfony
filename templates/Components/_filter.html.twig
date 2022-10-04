@@ -9,12 +9,14 @@
 {{ form_row(form.query) }}
 <h3 class="mb-2">Catégories :</h3>
 {{ form_row(form.categories, { attr: { class: 'd-flex flex-wrap gap-2' } }) }}
+<h4 class="mb-2">Sous-catégories :</h4>
+{# {{ form_row(form.subCategorie, { attr: { class: 'd-flex flex-wrap gap-2' } }) }} #}
 <h3 class="mb-2">Auteurs :</h3>
 {{ form_row(form.author, { attr: { class: 'd-flex flex-wrap gap-2' } }) }}
 
 {% if app.request.get('_route') == 'admin' %}
-<h3 class="mb-2">Articles actifs :</h3>
-{{ form_row(form.active) }}
+  <h3 class="mb-2">Articles actifs :</h3>
+  {{ form_row(form.active) }}
 {% endif %}
 
-{{ form_end(form, {render_rest: false }) }}
+{{ form_end(form, { render_rest: false }) }}

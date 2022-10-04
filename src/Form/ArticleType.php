@@ -7,6 +7,7 @@ use App\Entity\Categorie;
 use App\Entity\SubCategorie;
 use App\Form\ArticleImageType;
 use Symfony\Component\Form\AbstractType;
+use App\Form\SubCategorieAutocompleteField;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,6 +26,10 @@ class ArticleType extends AbstractType
             ])
             ->add('categories', CategorieAutocompleteField::class, [
                 'label' => 'Categories:',
+
+            ])
+            ->add('subCategories', SubCategorieAutocompleteField::class, [
+                'label' => 'Sous-categories:',
 
             ])
             // ->add('subCategorie', EntityType::class, [

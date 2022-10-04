@@ -14,13 +14,26 @@
       </p>
     </div>
     {% if article.categories %}
-      <div class="categorie-article">
+      <div class="categorie-article mt-2">
         <h2>Catégories :</h2>
-        <div class="list-tag">
+        <div class="list-tag mt-2">
           {% for categorie in article.categories %}
             <div class="tag" style="background-color:{{ categorie.color }}">
               <i class="bi bi-tags-fill text-bold"></i>
               {{ categorie.titre }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% if article.subCategories %}
+      <div class="categorie-article mt-2">
+        <h4>Sous-catégories :</h4>
+        <div class="list-tag mt-2">
+          {% for subCategorie in article.subCategories %}
+            <div class="tag" style="background-color:{{ subCategorie.color }}">
+              <i class="bi bi-tags-fill text-bold"></i>
+              {{ subCategorie.titre }}
             </div>
           {% endfor %}
         </div>
