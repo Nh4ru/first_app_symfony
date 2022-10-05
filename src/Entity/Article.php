@@ -52,9 +52,6 @@ class Article
     #[Gedmo\Slug(fields: ['titre'])]
     private $slug;
 
-    #[ORM\ManyToMany(targetEntity: Categorie::class, mappedBy: 'articles')]
-    private $categories;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
@@ -137,32 +134,32 @@ class Article
         return $this->slug;
     }
 
-    /**
-     * @return Collection<int, Categorie>
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
+    // /**
+    //  * @return Collection<int, Categorie>
+    //  */
+    // public function getCategories(): Collection
+    // {
+    //     return $this->categories;
+    // }
 
-    public function addCategory(Categorie $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addArticle($this);
-        }
+    // public function addCategory(Categorie $category): self
+    // {
+    //     if (!$this->categories->contains($category)) {
+    //         $this->categories[] = $category;
+    //         $category->addArticle($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCategory(Categorie $category): self
-    {
-        if ($this->categories->removeElement($category)) {
-            $category->removeArticle($this);
-        }
+    // public function removeCategory(Categorie $category): self
+    // {
+    //     if ($this->categories->removeElement($category)) {
+    //         $category->removeArticle($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getUser(): ?User
     {

@@ -24,10 +24,10 @@ class ArticleType extends AbstractType
                 'label' => 'Titre : ',
                 'required' => true
             ])
-            ->add('categories', CategorieAutocompleteField::class, [
-                'label' => 'Categories:',
+            // ->add('categories', CategorieAutocompleteField::class, [
+            //     'label' => 'Categories:',
 
-            ])
+            // ])
             ->add('subCategories', SubCategorieAutocompleteField::class, [
                 'label' => 'Sous-categories:',
 

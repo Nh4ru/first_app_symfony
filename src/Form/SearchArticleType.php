@@ -2,16 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Data\SearchData;
 use App\Entity\Categorie;
-use App\Entity\User;
+use App\Entity\SubCategorie;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SearchArticleType extends AbstractType
 {
@@ -38,6 +39,19 @@ class SearchArticleType extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ])
+            // ->add('subCategories', EntityType::class, [
+            //     'label' => false,
+            //     'required' => false,
+            //     'class' => SubCategorie::class,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('sb')
+            //             ->andWhere('sc.active = true')
+            //             ->orderBy('sc.titre', 'ASC');
+            //     },
+            //     'choice_label' => 'titre',
+            //     'multiple' => true,
+            //     'expanded' => true
+            // ])
             ->add(
                 'author',
                 EntityType::class,

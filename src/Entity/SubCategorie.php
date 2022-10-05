@@ -18,9 +18,6 @@ class SubCategorie
     #[ORM\Column(length: 30)]
     private ?string $titre = null;
 
-    #[ORM\Column(length: 10)]
-    private ?string $color = null;
-
     #[ORM\ManyToOne(inversedBy: 'subCategories')]
     private ?Categorie $categorie = null;
 
@@ -48,18 +45,6 @@ class SubCategorie
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(string $color): self
-    {
-        $this->color = $color;
 
         return $this;
     }

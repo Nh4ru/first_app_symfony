@@ -18,6 +18,18 @@ class SubCategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('categorie', EntityType::class, [
+                'label' => 'Catégorie',
+                'class' => Categorie::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->andWhere('c.enable = true')
+                        ->orderBy('c.titre', 'ASC');
+                },
+                'multiple' => false,
+                'expanded' => false,
+                'choice_label' => 'titre',
+            ])
             ->add('titre', TextType::class, [
                 'label' => 'Titre',
                 'required' => true,
@@ -25,24 +37,8 @@ class SubCategorieType extends AbstractType
                     'placeholder' => 'Titre de la sous-catégorie',
                 ],
             ])
-            ->add('categorie', EntityType::class, [
-                'label' => 'Catégorie',
-                'class' => Categorie::class,
-                // 'query_builder' => function (EntityRepository $er) {
-                //     return $er->createQueryBuilder('c')
-                //         ->andWhere('c.enable = true')
-                //         ->orderBy('c.titre', 'ASC');
-                // },
-                'multiple' => false,
-                'expanded' => false,
-                'choice_label' => 'titre',
-            ])
             ->add('enable', CheckboxType::class, [
                 'label' => 'Active',
-                'required' => true,
-            ])
-            ->add('color', ColorType::class, [
-                'label' => 'Couleur de la sous-catégorie',
                 'required' => true,
             ]);
     }

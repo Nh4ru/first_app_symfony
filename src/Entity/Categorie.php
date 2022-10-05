@@ -24,9 +24,6 @@ class Categorie
     #[ORM\Column(length: 10)]
     private ?string $color = null;
 
-    #[ORM\ManyToMany(targetEntity: Article::class, inversedBy: 'categories')]
-    private $articles;
-
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: SubCategorie::class)]
     private Collection $subCategories;
 
@@ -70,29 +67,29 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return Collection<int, Article>
-     */
-    public function getArticles(): Collection
-    {
-        return $this->articles;
-    }
+    // /**
+    //  * @return Collection<int, Article>
+    //  */
+    // public function getArticles(): Collection
+    // {
+    //     return $this->articles;
+    // }
 
-    public function addArticle(Article $article): self
-    {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-        }
+    // public function addArticle(Article $article): self
+    // {
+    //     if (!$this->articles->contains($article)) {
+    //         $this->articles[] = $article;
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeArticle(Article $article): self
-    {
-        $this->articles->removeElement($article);
+    // public function removeArticle(Article $article): self
+    // {
+    //     $this->articles->removeElement($article);
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getColor(): ?string
     {

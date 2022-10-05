@@ -13,14 +13,14 @@
         {{ article.user }}
       </p>
     </div>
-    {% if article.categories %}
+    {% if article.subCategories %}
       <div class="categorie-article mt-2">
         <h2>Catégories :</h2>
         <div class="list-tag mt-2">
-          {% for categorie in article.categories %}
-            <div class="tag" style="background-color:{{ categorie.color }}">
+          {% for subCategorie in article.subCategories %}
+            <div class="tag" style="background-color:{{ subCategorie.categorie.color }}">
               <i class="bi bi-tags-fill text-bold"></i>
-              {{ categorie.titre }}
+              {{ subCategorie.categorie.titre }}
             </div>
           {% endfor %}
         </div>
@@ -31,7 +31,7 @@
         <h4>Sous-catégories :</h4>
         <div class="list-tag mt-2">
           {% for subCategorie in article.subCategories %}
-            <div class="tag" style="background-color:{{ subCategorie.color }}">
+            <div class="tag" style="background-color:{{ subCategorie.categorie.color }}">
               <i class="bi bi-tags-fill text-bold"></i>
               {{ subCategorie.titre }}
             </div>

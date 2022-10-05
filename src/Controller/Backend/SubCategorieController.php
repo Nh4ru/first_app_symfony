@@ -2,8 +2,10 @@
 
 namespace App\Controller\Backend;
 
+use App\Entity\Categorie;
 use App\Entity\SubCategorie;
 use App\Form\SubCategorieType;
+use App\Repository\CategorieRepository;
 use App\Repository\SubCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,8 +76,8 @@ class SubCategorieController extends AbstractController
             return new Response('Categorie non trouvé', 404);
         } else {
             $subCategorie->setEnable(!$subCategorie->isEnable());
-            //$categorie->isEnable() ? $categorie->setEnable(false) : $categorie->setEnable(true);
-            $SubCategorieRepository->add($subCategorie, true);
+            //$subCategorie->isEnable() ? $subCategorie->setEnable(false) : $subCategorie->setEnable(true);
+            $SubCategorieRepository->save($subCategorie, true);
 
             return new Response('Visibility changed', 201);
         }

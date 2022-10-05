@@ -5,10 +5,12 @@ namespace App\Controller\Frontend;
 use App\Data\SearchData;
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Entity\SubCategorie;
 use App\Form\CommentType;
 use App\Form\SearchArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\SubCategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,8 +67,9 @@ class ArticleController extends AbstractController
         ?Article $article,
         Request $request,
         Security $security,
-        CommentRepository $repoComment
+        CommentRepository $repoComment,
     ): Response|RedirectResponse {
+
         if (!$article instanceof Article) {
             $this->addFlash('error', 'Article non trouvé');
 

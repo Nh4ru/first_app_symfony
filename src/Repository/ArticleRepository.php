@@ -74,7 +74,7 @@ class ArticleRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('a')
             ->select('a', 'u', 'c', 'co', 'i')
             ->join('a.user', 'u')
-            ->leftJoin('a.categories', 'c')
+            ->leftJoin('a.subCategories', 'c')
             ->leftJoin('a.comments', 'co')
             ->leftJoin('a.images', 'i');
 
