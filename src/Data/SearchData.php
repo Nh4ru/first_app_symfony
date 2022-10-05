@@ -29,6 +29,13 @@ class SearchData
     private ?array $categories = [];
 
     /**
+     * Array of tag for search posts
+     *
+     * @var array|null
+     */
+    private ?array $subCategories = [];
+
+    /**
      * Array of user for the search posts
      *
      * @var array|null
@@ -160,6 +167,30 @@ class SearchData
     public function setActive(?array $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of subCategories
+     *
+     * @return ?array
+     */
+    public function getSubCategories(): ?array
+    {
+        return $this->subCategories;
+    }
+
+    /**
+     * Set the value of subCategories
+     *
+     * @param ?array $subCategories
+     *
+     * @return self
+     */
+    public function setSubCategories(?array $subCategories): self
+    {
+        $this->subCategories = $subCategories;
 
         return $this;
     }

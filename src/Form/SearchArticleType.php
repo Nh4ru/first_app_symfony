@@ -39,19 +39,19 @@ class SearchArticleType extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ])
-            // ->add('subCategories', EntityType::class, [
-            //     'label' => false,
-            //     'required' => false,
-            //     'class' => SubCategorie::class,
-            //     'query_builder' => function (EntityRepository $er) {
-            //         return $er->createQueryBuilder('sb')
-            //             ->andWhere('sc.active = true')
-            //             ->orderBy('sc.titre', 'ASC');
-            //     },
-            //     'choice_label' => 'titre',
-            //     'multiple' => true,
-            //     'expanded' => true
-            // ])
+            ->add('subCategories', EntityType::class, [
+                'label' => false,
+                'required' => false,
+                'class' => SubCategorie::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('sc')
+                        ->andWhere('sc.enable = true')
+                        ->orderBy('sc.titre', 'ASC');
+                },
+                'choice_label' => 'titre',
+                'multiple' => true,
+                'expanded' => true
+            ])
             ->add(
                 'author',
                 EntityType::class,

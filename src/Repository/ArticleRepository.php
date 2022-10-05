@@ -72,9 +72,10 @@ class ArticleRepository extends ServiceEntityRepository
     public function findSearchData(SearchData $search, bool $active = true): PaginationInterface
     {
         $query = $this->createQueryBuilder('a')
-            ->select('a', 'u', 'c', 'co', 'i')
+            ->select('a', 'u', 'c', 'co', 'i', 'sc')
             ->join('a.user', 'u')
-            ->leftJoin('a.subCategories', 'c')
+            ->leftJoin('a.subCategories', 'sc')
+            ->join('sc.categorie', 'c')
             ->leftJoin('a.comments', 'co')
             ->leftJoin('a.images', 'i');
 
@@ -98,6 +99,11 @@ class ArticleRepository extends ServiceEntityRepository
         if (!empty($search->getCategories())) {
             $query = $query->andWhere('c.id IN(:tags)')
                 ->setParameter('tags', $search->getCategories());
+        }
+
+        if (!empty($search->getSubCategories())) {
+            $query = $query->andWhere('sc.id IN(:subTags)')
+                ->setParameter('subTags', $search->getSubCategories());
         }
 
         if (!empty($search->getAuthor())) {
